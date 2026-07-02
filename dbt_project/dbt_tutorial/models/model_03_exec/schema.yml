@@ -1,0 +1,22 @@
+version: 2
+
+models:
+  - name: citi_trips_rental
+    description: "This query displays the number of trips and station name"
+    columns:
+      - name: name
+        description: "The name of the station"
+        data_tests:
+          - unique
+          - not_null
+
+      - name: rental_methods
+        description: "The type of the rental method"
+        data_tests:
+          - not_null
+
+
+      - name: T_trips
+        description: "The total trips"
+        data_tests:
+          - not_null

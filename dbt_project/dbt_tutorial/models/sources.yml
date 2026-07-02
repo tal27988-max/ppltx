@@ -1,0 +1,58 @@
+
+version: 2
+
+
+sources:
+  - name: google
+    database: bigquery-public-data
+    schema: google_trends
+    tables:
+      - name: top_terms
+        identifier: top_terms
+        freshness: # make this a little more strict
+          warn_after: { count: 6, period: hour }
+          error_after: { count: 12, period: hour }
+      - name: international_top_terms
+
+
+  - name: citi
+    database: bigquery-public-data
+    schema: new_york_citibike
+    tables:
+      - name: stations
+        identifier: citibike_stations
+      - name: trips
+        identifier: citibike_trips
+
+
+  - name: jaffle
+    database: dbt-tutorial
+    schema: jaffle_shop
+    freshness: # make this a little more strict
+      warn_after: { count: 12, period: day }
+      error_after: { count: 24, period: day }
+    tables:
+      - name: customers
+      - name: orders
+        freshness: # make this a little more strict
+          warn_after: { count: 6, period: day }
+          error_after: { count: 12, period: day }
+
+
+  - name: data_prep
+    database: dbt-tutorial
+    schema: data_prep
+    description: "The original public project for dbt"
+    tables:
+      - name: jaffle_shop_orders
+        freshness: # default freshness
+          warn_after: { count: 12, period: hour }
+          error_after: { count: 24, period: hour }
+
+      - name: stripe_payments
+        description: "The stripes payments table"
+
+      - name: jaffle_shop_customers
+
+
+

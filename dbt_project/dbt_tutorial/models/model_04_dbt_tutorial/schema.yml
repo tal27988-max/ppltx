@@ -1,0 +1,61 @@
+version: 2
+
+models:
+  - name: customers
+    description: "This a model created in exercise"
+    columns:
+      - name: customer_id
+        description: "The id of the customer"
+        data_tests:
+          - unique
+          - not_null
+
+      - name: first_name
+        description: "The name of the customer"
+        data_tests:
+          - not_null
+
+      - name: last_name
+        description: "The las name of the customer"
+        data_tests:
+          - not_null
+          - string_not_empty
+
+      - name: first_order_date
+        description: "The date of the first order"
+        data_tests:
+          - not_null:
+              config:
+                error_if: ">40"
+                warn_if: ">5"
+
+      - name: most_recent_order_date
+        description: "The date of the first order"
+        data_tests:
+          - not_active_for_n_days
+
+      - name: number_of_orders
+        description: "The number of orders"
+
+
+
+  - name: stg_customers
+    description: "This a model created in exercise"
+    columns:
+      - name: customer_id
+        description: "The id of the customer"
+        data_tests:
+          - unique
+          - not_null
+
+      - name: first_name
+        description: "The name of the customer"
+        data_tests:
+          - not_null
+
+      - name: last_name
+        description: "The las name of the customer"
+        data_tests:
+          - not_null
+
+

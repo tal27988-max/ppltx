@@ -1,0 +1,30 @@
+
+version: 2
+
+models:
+  - name: my_first_dbt_model
+    description: "A starter dbt model"
+    columns:
+      - name: id
+        description: "The primary key for this table"
+        data_tests:
+          - unique
+          - not_null:
+              config:
+                error_if: ">10"
+                warn_if: ">2"
+
+  - name: my_second_dbt_model
+    description: "A starter dbt model"
+    columns:
+      - name: id
+        description: "The primary key for this table"
+        data_tests:
+          - unique
+          - not_null
+
+  - name: my_third_dbt_model
+    description: "New model add in the dbt course demonstration"
+
+  - name: my_forth_dbt_model
+    description: "Create dependency"

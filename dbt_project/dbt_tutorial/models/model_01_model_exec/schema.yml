@@ -1,0 +1,33 @@
+version: 2
+
+models:
+  - name: google_trends
+    description: "This query shows a list of the daily top Google ..."
+    columns:
+      - name: Day
+#        description: "The date of the search terms"
+        description: "{{ doc('day_column') }}"
+        data_tests:
+          - unique
+          - not_null
+
+      - name: Top_Term
+        description: "The name of the top terms"
+        data_tests:
+          - not_null
+          - string_not_empty
+
+  - name: terms_length
+    description: "This query shows a list terms sorted by length"
+    columns:
+      - name: Day
+        description: "The date of the search terms"
+        data_tests:
+          - unique
+          - not_null
+
+      - name: Top_Term
+        description: "The name of the top terms"
+        data_tests:
+          - not_null
+          - string_not_empty

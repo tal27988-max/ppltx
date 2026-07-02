@@ -1,0 +1,11 @@
+version: 2
+
+models:
+  - name: customers_jinja
+    description: "This a model based on dbt project with jinja"
+    columns:
+      - name: order_id
+        description: "The id of the order"
+        data_tests:
+          - not_null
+
