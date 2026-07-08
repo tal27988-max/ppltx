@@ -122,11 +122,13 @@ I continuously expand my knowledge in modern Data Engineering technologies:
 BI Developer with experience in:
 
 - SQL
-- Power BI
 - Python
 - ETL Development
-- SAP
+- Snowflake
 - BigQuery
+- Power BI
+- Looker
+
 
 Currently focusing on becoming a Data Engineer by building real-world projects and learning cloud-based technologies.
 
