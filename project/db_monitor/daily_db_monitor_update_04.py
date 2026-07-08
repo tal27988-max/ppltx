@@ -37,6 +37,10 @@ import os
 import platform
 
 
+
+# --------------------parser--------------------------------
+
+# functions
 def process_command_line(argv):
     """
     Return a 2-tuple: (settings object, args list).
@@ -54,7 +58,7 @@ def process_command_line(argv):
         description=__doc__,
         formatter_class=argparse.RawDescriptionHelpFormatter
     )
-    parser.add_argument("project_id", choices=["my-project-ppltx-sql", "bigquery-public-data"],
+    parser.add_argument("project_id", # choices=["my-project-ppltx-sql", "bigquery-public-data"],
                         help="""Operation to perform. The arguments for each option are:
                         Full_Load:   --date""",
                         default="my-project-ppltx-sql")
@@ -70,7 +74,8 @@ x = sys.argv[1:]
 parser.parse_args(x, namespace=flags)
 
 
-# define the project_id
+# ----------------------define the project_id----------------
+
 project_id = flags.project_id
 step_id = 0
 
@@ -91,7 +96,8 @@ if project_id == "bigquery-public-data":
 else: log_table = f"{project_id}.logs.daily_logs"
 
 
-# init log dict
+# ---------------------init log dict--------------------------------------------
+
 log_dict = {'ts': datetime.now(),
             'dt': datetime.now().strftime("%Y-%m-%d"),
             'uid': str(uuid.uuid4())[:8],
@@ -117,7 +123,9 @@ def set_log(log_dict, step, log_table=log_table):
 # start
 set_log(log_dict, "start")
 
-# List of all dataset objects
+
+# ----------------------List of all dataset objects-------------------------------------
+
 datasets = list(client.list_datasets())  # Make an API request.
 
 # Get project name
@@ -167,7 +175,8 @@ job_config = bigquery.LoadJobConfig(
     )
 
 
-# load tables data into a table
+# ------------------------load tables data into a table--------------------------------------
+
 dst_table ="my-project-ppltx-sql.bi_final_project.tables_in_project"
 dataframe = pd.DataFrame(tables_info_list)
 
