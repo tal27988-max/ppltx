@@ -15,7 +15,7 @@ My focus is on building reliable data pipelines, improving data quality, and wor
 | Programming | Python |
 | Databases | SQL, BigQuery, Snowflake |
 | Data Engineering | ETL, dbt |
-| BI | Power BI |
+| BI | Looker, Power BI |
 | Version Control | Git, GitHub |
 | IDE | PyCharm |
 
